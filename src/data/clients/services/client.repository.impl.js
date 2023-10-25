@@ -32,31 +32,32 @@ class ClientRepositoryImpl {
      */
     async getPrice(_param) {
         try {
-            const client = await ClientModel.findById(_param.getUser_id());
+            const user_id = _param.getUser_id();
+
+            const client = await Clients.findById(user_id);
             if (!client) {
                 return new Result.Left('Client not found');
             }
 
-            const clientDom = new ClientDom(
-                clientFromMongo._id,
-                clientFromMongo.name,
-                clientFromMongo.specialPrices
-            );
+            const product_name = _param.getName_product();
 
-            const product = await Product.findOne({ name: _param.getName_product() });
-
+            const product = await Product.findOne({ name: product_name });
             if (!product) {
                 return new Result.Left('Product not found');
             }
 
+            const clientDom = new ClientDom(
+                client._id,
+                client.name,
+                client.specialPrices
+            );
 
-
-            const specialPrice = clientDom.getSpecialPrice(product.brand, product.name);
+            const specialPrice = clientDom.getSpecialPrice(product.brand, product_name);
 
             if (specialPrice !== null) {
                 return new Result.Right(specialPrice);
             } else {
-                return new Result.Right(1000);
+                return new Result.Right(product.price);
             }
         } catch (error) {
             log(error)

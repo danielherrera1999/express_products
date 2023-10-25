@@ -23,11 +23,14 @@ class ClientDom {
 
     getSpecialPrice(brand, productName) {
         const specialPrices = this.specialPrices.find(
-            (brandPriceSpecial) =>
-            brandPriceSpecial.prices.find(
-                (productPrice) =>
-                productPrice.product === productName && brandPriceSpecial.brand === brand
-            )
+            (brandPriceSpecial) => {
+                return brandPriceSpecial.prices.find(
+                    (productPrice) => {
+                        return productPrice.product === productName && brandPriceSpecial.brand === brand
+                    }
+                )
+            }
+
         );
         return specialPrices ? specialPrices.prices[0].specialPrices : null;
     }
