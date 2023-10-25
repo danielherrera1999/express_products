@@ -1,7 +1,7 @@
 require('dotenv').config();
-
 const express = require('express')
-const cors = require("cors")
+const cors = require("cors");
+const swaggerDocs = require('./core/config/documentation');
 
 const app = express()
 
@@ -19,10 +19,6 @@ app.use(express.urlencoded({ extended: true }))
 /// Connect to bda
 require('./core/config/db.config');
 
-// Simple router example
-app.get("/server-on", (req, res) => {
-    res.json({ message: "WELCOME SERVER ON" })
-})
 
 // routes
 require('./application/products/routes/product.routes')(app);
@@ -33,4 +29,5 @@ const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
     console.log(`SERVER IS RUNNING ON PORT ${PORT}. `);
     console.log(`SERVER IS RUNNING ON PORT ${process.env.URL} `);
+    swaggerDocs(app, PORT)
 })
