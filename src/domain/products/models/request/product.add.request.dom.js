@@ -1,14 +1,9 @@
-class ProductDom {
-    constructor(id, name, stock, price, brand) {
-        this.id = id;
+class ProductAddRequestDom {
+    constructor(name, stock, price, brand) {
         this.name = name;
         this.stock = stock;
         this.price = price;
         this.brand = brand;
-    }
-
-    getId() {
-        return this.name;
     }
 
     getName() {
@@ -25,10 +20,6 @@ class ProductDom {
 
     getBrand() {
         return this.brand;
-    }
-
-    setId(newValue) {
-        this.id = newValue;
     }
 
     setName(newValue) {
@@ -48,4 +39,4 @@ class ProductDom {
     }
 }
 
-module.exports = ProductDom;
+module.exports = ProductRequestDom;
