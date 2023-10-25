@@ -39,4 +39,4 @@ class ProductAddRequestDom {
     }
 }
 
-module.exports = ProductRequestDom;
+module.exports = ProductAddRequestDom;
