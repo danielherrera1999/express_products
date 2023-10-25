@@ -7,7 +7,7 @@ const ProductDom = require('../../models/product.dom');
 const productRepositoryDom = new ProductRepositoryDom();
 
 
-class TaskListUseCaseDom {
+class ProductListUseCaseDom {
     constructor(productRepositoryDom) {
             this.productRepositoryDom = productRepositoryDom;
         }
@@ -31,4 +31,4 @@ class TaskListUseCaseDom {
     }
 }
 
-module.exports = TaskListUseCaseDom
+module.exports = ProductListUseCaseDom
