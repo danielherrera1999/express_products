@@ -24,10 +24,6 @@ require('./core/config/db.config');
 require('./application/products/routes/product.routes')(app);
 require('./application/clients/routes/client.routes')(app);
 
-// routes
-require('./application/products/routes/product.routes')(app);
-require('./application/clients/routes/client.routes')(app);
-
 // Set port , listen server
 const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
