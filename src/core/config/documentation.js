@@ -14,11 +14,11 @@ const options = {
             },
         },
         servers: [{
-                url: "http://localhost:8001",
+                url: "https://backe-production.up.railway.app",
             },
             {
-                url: "http://example:8001",
-            }
+                url: "http://localhost:8000",
+            },
         ],
     },
     apis: [
