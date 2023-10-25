@@ -1,6 +1,7 @@
 const Result = require('../../../core/utils/result');
 const { Failure } = require('../../../core/response/failure/failure.response');
 const ProductMongo = require('../modals/product.modal');
+const ProductDom = require('../../../domain/products/models/product.dom');
 
 class ProductRepositoryImpl {
     /**
@@ -11,10 +12,10 @@ class ProductRepositoryImpl {
     async add(_param) {
         try {
             const newProduct = new ProductMongo({
-                nombre: _param.title,
+                name: _param.name,
                 stock: _param.stock,
-                precio: _param.precio,
-                marca: _param.marca,
+                price: _param.price,
+                brand: _param.brand,
             });
 
             await newProduct.save();
@@ -31,15 +32,15 @@ class ProductRepositoryImpl {
      */
     async list() {
         try {
-            const products = await ProductMongo.find();
+            const products = await ProductMongo.find({ stock: { $gt: 0 } });
 
             const productList = products.map(product => {
                 const productDom = new ProductDom(
                     product._id,
-                    product.nombre,
+                    product.name,
                     product.stock,
-                    product.precio,
-                    product.marca,
+                    product.price,
+                    product.brand,
                 );
                 return productDom;
             });

@@ -1,24 +1,24 @@
 const Result = require('../../../../core/utils/result');
 const { Failure } = require('../../../../core/response/failure/failure.response');
-const ProductRepositoryDom = require('../../repository/product.repository.dom');
-const ProductDom = require('../../models/product.dom');
+const ClientRepositoryDom = require('../../repository/client.repository.dom');
 
 
-const productRepositoryDom = new ProductRepositoryDom();
+const clientRepositoryDom = new ClientRepositoryDom();
 
 
-class ProductListUseCaseDom {
-    constructor(productRepositoryDom) {
-            this.productRepositoryDom = productRepositoryDom;
+class ClientPricesUseCaseDom {
+    constructor(clientRepositoryDom) {
+            this.clientRepositoryDom = clientRepositoryDom;
         }
         /**
-         * Sign up of user.
-         * @returns {Promise<Result<Array<ProductDom>, Failure>>}
+         * Client get price.
+         * * * @param {ClientPriceRequestDom} _param - .
+         * @returns {Promise<Result<long, Failure>>}
          */
     async execute(_param) {
         try {
             // Called the repository
-            const value = await this.productRepositoryDom.list();
+            const value = await this.clientRepositoryDom.getPrice(_param);
             // condition of successfull
             if (value.value !== undefined) {
                 return new Result.Right(value.value);
@@ -31,4 +31,4 @@ class ProductListUseCaseDom {
     }
 }
 
-module.exports = ProductListUseCaseDom
+module.exports = ClientPricesUseCaseDom
