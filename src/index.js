@@ -6,6 +6,10 @@ const cors = require("cors")
 const app = express()
 
 
+var corsOptions = {
+    origin: process.env.URL_CORS
+}
+
 //  Parser requests of content-type to application/json
 app.use(express.json())
 
@@ -19,6 +23,10 @@ require('./core/config/db.config');
 app.get("/server-on", (req, res) => {
     res.json({ message: "WELCOME SERVER ON" })
 })
+
+// routes
+require('./application/products/routes/product.routes')(app);
+require('./application/clients/routes/client.routes')(app);
 
 // Set port , listen server
 const PORT = process.env.PORT || 8000
