@@ -44,7 +44,7 @@ module.exports = function(app) {
     );
     /**
      * @swagger
-     * /api/services/client/product/add:
+     * /api/services/product/add:
      *   post:
      *     summary: Add a new product
      *     description: Add a new product with the specified details.
