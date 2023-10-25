@@ -46,6 +46,10 @@ class ClientRepositoryImpl {
                 return new Result.Left('Product not found');
             }
 
+            if (product.stock <= 0 || product.stock == null) {
+                return new Result.Left('Product not stock');
+            }
+
             const clientDom = new ClientDom(
                 client._id,
                 client.name,
