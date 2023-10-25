@@ -19,7 +19,7 @@ const addClient = async(req, res) => {
         const result = await clientAddUseCaseDom.execute(_param)
 
         if (result.value !== undefined) {
-            const response = ApiResponse.success(result.value, 'Successfully add product', 200);
+            const response = ApiResponse.success(result.value, 'Successfully add client', 200);
             res.status(200).json(response);
         } else {
             const errorMessage = result.error;

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const mongodbURL = process.env.URLBDA;
+let selectedURL = process.env.NODE_ENV === 'production' ? process.env.URLBDA : process.env.URLBDALOCAL;
 
-mongoose.connect(mongodbURL, {
+mongoose.connect(selectedURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
