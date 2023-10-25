@@ -4,7 +4,7 @@ const ProductMongo = require('../modals/product.modal');
 
 class ProductRepositoryImpl {
     /**
-     * add of task.
+     * add of product.
      * @param {ProductAddRequestDom} _param - .
      * @returns {Promise<Result<Boolean, Failure>>}
      */
@@ -26,7 +26,7 @@ class ProductRepositoryImpl {
     }
 
     /**
-     * list of task.
+     * list of product.
      * @returns {Promise<Result<Array<TaskDom>, Failure>>}
      */
     async list() {
